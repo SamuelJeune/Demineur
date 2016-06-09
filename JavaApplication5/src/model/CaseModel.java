@@ -49,8 +49,6 @@ public class CaseModel implements Observable{
     }
 
     public void setValue(int value) {
-        
-        
         this.value = value;
     }
 
@@ -64,6 +62,7 @@ public class CaseModel implements Observable{
 
     public void setDiscovered(boolean discovered) {
         this.discovered = discovered;
+        notifyObserver(this.value);
     }
 
     @Override
@@ -81,4 +80,11 @@ public class CaseModel implements Observable{
         for(Observer obs : listObserver)
               obs.update(flag);   
     }    
+    @Override
+    public void notifyObserver(int n) {
+        for(Observer obs : listObserver)
+              obs.update(n);   
+    }    
+
+    
 }

@@ -41,5 +41,9 @@ public class CaseControler {
         
         
     }
+
+    public void discover() {
+        this.caseModel.setDiscovered(true);
+    }
     
 }

@@ -15,6 +15,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import model.CaseModel;
 import model.Observer;
 
@@ -81,6 +82,16 @@ public class Case extends Parent implements Observer{
             }
         });
         
+        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                        caseControler.discover();
+                        System.out.println("case");
+                }
+            }
+        });
+        
         
     }
     
@@ -106,6 +117,16 @@ public class Case extends Parent implements Observer{
         else this.getChildren().remove(drap);
     }
 
+    @Override
+    public void update(int n) {
+        System.out.println(n);
+        Text nb = new Text(Integer.toString(n));
+        this.getChildren().add(nb);
+
+        
+            
+        
+    }    
     
     
 }

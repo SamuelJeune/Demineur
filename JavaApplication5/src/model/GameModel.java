@@ -154,5 +154,10 @@ public class GameModel implements Observable{
         for(Observer obs : listObserver)
             obs.update(flag);  
     }
+
+    @Override
+    public void notifyObserver(int n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

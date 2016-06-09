@@ -11,4 +11,5 @@ package model;
  */
 public interface Observer {
     public void update(boolean flag);
+    public void update(int n);
 }

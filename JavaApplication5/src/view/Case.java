@@ -3,25 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package demineur;
+package view;
 
+import controler.CaseControler;
+import view.Drapeau;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import model.CaseModel;
+import model.Observer;
 
 /**
  *
  * @author p1307887
  */
-public class Case extends Parent{
+public class Case extends Parent implements Observer{
     
     private int positionX = 0;
     private int positionY = 0;
     Rectangle fond_case = new Rectangle(20,20,Color.WHITE);
+    private boolean drapeau = false;
+    Drapeau drap = new Drapeau();
+    private int n;
+    private CaseModel caseModel = new CaseModel();
+    private CaseControler caseControler = new CaseControler(caseModel);
     
     public Case(int posX, int posY){
         
@@ -37,6 +47,7 @@ public class Case extends Parent{
         this.getChildren().add(fond_case);
         this.setTranslateX(positionX);
         this.setTranslateY(positionY);
+        caseModel.addObserver(this);
         
         this.setOnMouseEntered(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent me){
@@ -59,6 +70,18 @@ public class Case extends Parent{
                 relacher();
             }
         });
+        
+        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+                        caseControler.addFlag();
+                        System.out.println("case");
+                }
+            }
+        });
+        
+        
     }
     
     public void appuyer(){
@@ -69,6 +92,18 @@ public class Case extends Parent{
     public void relacher(){
         fond_case.setFill(Color.WHITE);
         this.setTranslateY(positionY);
+    }
+    
+    
+
+    @Override
+    public void update(boolean flag) {
+        System.out.println(flag);
+
+        if (flag) {
+            this.getChildren().add(drap);
+        }
+        else this.getChildren().remove(drap);
     }
 
     

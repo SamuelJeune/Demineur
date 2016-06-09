@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package demineur;
+package view;
 
 import javafx.scene.Parent;
 import javafx.scene.effect.Reflection;
@@ -12,7 +12,6 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
-import demineur.Case;
 
 /**
  *

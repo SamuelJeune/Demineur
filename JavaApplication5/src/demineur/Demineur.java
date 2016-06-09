@@ -5,17 +5,49 @@
  */
 package demineur;
 
+import controler.Controler;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import view.View;
+import static javafx.application.Application.launch;
+import model.Observer;
+
 /**
  *
  * @author p1307887
  */
-public class Demineur {
+public class Demineur extends Application implements Observer{
 
     /**
      * @param args the command line arguments
      */
+    private int size = 10;
+    private int bombNumber = 5;
+    private Controler controler = new Controler(size, bombNumber);
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        
+        launch(args);
+    }   
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Group root = new Group();
+        Scene scene = new Scene(root, 800, 600, Color.LIGHTBLUE);        
+        View view = new View();              
+        root.getChildren().add(view);//on l'ajoute à notre groupe root
+        stage.setScene(scene);
+        stage.show();
     }
+
+    @Override
+    public void update(boolean flag) {
+        
+    }
+
     
 }

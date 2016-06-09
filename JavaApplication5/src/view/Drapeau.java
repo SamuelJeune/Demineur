@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package demineur;
+package view;
 
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
@@ -18,6 +19,9 @@ public class Drapeau extends Parent{
     public Drapeau(){
         Image drapeau = new Image(Drapeau.class.getResourceAsStream("images/drapeau.png"));
         ImageView drapeauView = new ImageView(drapeau);
+        drapeauView.setFitHeight(20);
+        drapeauView.setPreserveRatio(true);
+        this.getChildren().add(drapeauView);
     }
     
 }

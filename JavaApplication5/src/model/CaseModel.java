@@ -5,6 +5,7 @@
  */
 package model;
 
+import controler.Controler;
 import java.util.ArrayList;
 
 
@@ -14,12 +15,24 @@ import java.util.ArrayList;
  * @author p1307887
  */
 public class CaseModel implements Observable{
+    
+    private Controler controler;
     private boolean flagged = false;
     private int value;
     private int posX;
     private int posY;
     private boolean discovered = false;
-    private ArrayList<Observer> listObserver = new ArrayList<Observer>();   
+    private ArrayList<Observer> listObserver = new ArrayList<Observer>();
+
+    public CaseModel(Controler controler,  int posX, int posY) {
+        this.controler = controler;
+        this.value = controler.getValue(posX, posY);
+        this.posX = posX;
+        this.posY = posY;
+        this.controler.grille[posX][posY]= this;
+    }
+    
+    
 
     public boolean isFlagged() {
         return flagged;
@@ -28,15 +41,6 @@ public class CaseModel implements Observable{
     public int getValue() {
         return value;
     }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
     public boolean isDiscovered() {
         return discovered;
     }
@@ -45,24 +49,16 @@ public class CaseModel implements Observable{
         System.out.println(flag);
 
         this.flagged = flag;
-        notifyObserver(this.flagged);
+        if (!discovered){
+            notifyObserver(this.flagged, this.discovered);
+        }
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
 
     public void setDiscovered(boolean discovered) {
         this.discovered = discovered;
-        notifyObserver(this.value);
+        notifyObserver(this.flagged, this.discovered);
     }
 
     @Override
@@ -76,15 +72,27 @@ public class CaseModel implements Observable{
     }
 
     @Override
-    public void notifyObserver(boolean flag) {
+    public void notifyObserver(boolean flag, boolean discover) {
         for(Observer obs : listObserver)
-              obs.update(flag);   
+              obs.update(flag, discover);   
     }    
-    @Override
-    public void notifyObserver(int n) {
-        for(Observer obs : listObserver)
-              obs.update(n);   
-    }    
-
     
+
+    public void discovering() {
+        if (!discovered){
+                this.setDiscovered(true);
+                if(value==0){
+                    controler.discovering(posX, posY);
+                }
+            }
+        }
+
+    @Override
+    public void notifyObserver(boolean fail) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void fail() {
+        controler.fail();
+    }
 }

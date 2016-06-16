@@ -23,8 +23,8 @@ public class GameModel implements Observable{
         this.size = size;
         this.bombNumber = bombNumber;
         this.matrixBomb = new int[size][size]; 
-        this.init();
-        this.calcul();
+        
+        System.out.println("const");
     }
     
     public void init(){
@@ -42,6 +42,7 @@ public class GameModel implements Observable{
             for(int j=0; j<size; j++){
             }
         }
+        System.out.println("init");
     }
     
     public void calcul(){
@@ -133,10 +134,17 @@ public class GameModel implements Observable{
                 if (matrixBomb[size-2][size-2]==1000) n++;                
                 matrixBomb[size-1][size-1]=n;
                 }
+        System.out.println("calc");
     }
 
     public int[][] getMatrixBomb() {
         return matrixBomb;
+    }
+    
+    public int getValue(int i, int j){
+        System.out.println("value");
+        return matrixBomb[i][j];
+        
     }
 
     @Override
@@ -149,15 +157,19 @@ public class GameModel implements Observable{
         listObserver = new ArrayList<Observer>();    
     }
 
-    @Override
+    
+    
+
+    
+
     public void notifyObserver(boolean flag) {
-        for(Observer obs : listObserver)
-            obs.update(flag);  
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void notifyObserver(int n) {
+    public void notifyObserver(boolean flag, boolean discover) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     
 }

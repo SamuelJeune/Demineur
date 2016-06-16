@@ -28,6 +28,7 @@ public class Demineur extends Application implements Observer{
     private int bombNumber = 5;
     private Controler controler = new Controler(size, bombNumber);
     
+    
     public static void main(String[] args) {
         
         
@@ -37,20 +38,27 @@ public class Demineur extends Application implements Observer{
     @Override
     public void start(Stage stage) throws Exception {
         Group root = new Group();
-        Scene scene = new Scene(root, 800, 600, Color.LIGHTBLUE);        
-        View view = new View();              
+        View view = new View(controler); 
+        //BorderPane root = new BorderPane();
+        //root.setCenter(view);
         root.getChildren().add(view);//on l'ajoute à notre groupe root
+        Scene scene = new Scene(root, 800, 600, Color.LIGHTBLUE);
         stage.setScene(scene);
         stage.show();
     }
 
     @Override
-    public void update(boolean flag) {
+    public void update(boolean fail) {
         
     }
 
     @Override
     public void update(int n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(boolean flag, boolean discover) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

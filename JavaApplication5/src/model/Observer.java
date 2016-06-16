@@ -10,6 +10,8 @@ package model;
  * @author p1307887
  */
 public interface Observer {
-    public void update(boolean flag);
+    public void update(boolean flag, boolean discover);
     public void update(int n);
+
+    public void update(boolean fail);
 }

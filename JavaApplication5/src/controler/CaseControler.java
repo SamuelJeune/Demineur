@@ -20,15 +20,13 @@ public class CaseControler {
 
     public CaseControler(CaseModel caseModel) {
         this.caseModel = caseModel;
+        this.value=caseModel.getValue();
         
     }
     
     public void addFlag(){
-        
-
         if (flagged==false){
             this.flagged=true;
-            
             }
         else {
             this.flagged=false;
@@ -36,14 +34,22 @@ public class CaseControler {
         this.caseModel.setFlagged(flagged);
         System.out.println(flagged);
     }
-    
-    public void control(){
-        
-        
-    }
 
     public void discover() {
-        this.caseModel.setDiscovered(true);
+        if (value==1000){
+            caseModel.setDiscovered(true);
+            fail();
+        }
+        else{
+            caseModel.discovering();
+        }
     }
+
+    private void fail() {
+        System.out.println("fail");
+        caseModel.fail();
+    }
+
+    
     
 }

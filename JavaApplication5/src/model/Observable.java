@@ -7,12 +7,12 @@ package model;
 
 /**
  *
- * @author p1307887
+ * @author SAM
  */
 public interface Observable {
     public void addObserver(Observer obs);
     public void removeObserver();
     public void notifyObserver(boolean flag, boolean discover);
     public void notifyObserver(boolean fail);
+    public void notifyObserver(int n, int m);
 }
-

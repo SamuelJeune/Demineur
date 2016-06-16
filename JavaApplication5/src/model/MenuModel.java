@@ -7,8 +7,8 @@ package model;
 
 /**
  *
- * @author p1307887
+ * @author SAM
  */
-public abstract class AbstractModel implements Observable {
+public class MenuModel {
     
 }

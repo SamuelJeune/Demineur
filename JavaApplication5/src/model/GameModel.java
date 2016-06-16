@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.util.ArrayList;
@@ -22,9 +18,7 @@ public class GameModel implements Observable{
     public GameModel(int size, int bombNumber) {
         this.size = size;
         this.bombNumber = bombNumber;
-        this.matrixBomb = new int[size][size]; 
-        
-        System.out.println("const");
+        this.matrixBomb = new int[size][size];
     }
     
     public void init(){
@@ -144,23 +138,12 @@ public class GameModel implements Observable{
     public int getValue(int i, int j){
         System.out.println("value");
         return matrixBomb[i][j];
-        
     }
 
     @Override
     public void addObserver(Observer obs) {
         this.listObserver.add(obs);
     }
-
-    @Override
-    public void removeObserver() {
-        listObserver = new ArrayList<Observer>();    
-    }
-
-    
-    
-
-    
 
     public void notifyObserver(boolean flag) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -170,6 +153,14 @@ public class GameModel implements Observable{
     public void notifyObserver(boolean flag, boolean discover) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    @Override
+    public void removeObserver() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void notifyObserver(int n, int m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }  
 }

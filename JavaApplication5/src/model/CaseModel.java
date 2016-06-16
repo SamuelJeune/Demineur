@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import controler.Controler;
@@ -31,8 +27,6 @@ public class CaseModel implements Observable{
         this.posY = posY;
         this.controler.grille[posX][posY]= this;
     }
-    
-    
 
     public boolean isFlagged() {
         return flagged;
@@ -54,8 +48,6 @@ public class CaseModel implements Observable{
         }
     }
 
-
-
     public void setDiscovered(boolean discovered) {
         this.discovered = discovered;
         notifyObserver(this.flagged, this.discovered);
@@ -64,11 +56,6 @@ public class CaseModel implements Observable{
     @Override
     public void addObserver(Observer obs) {
         this.listObserver.add(obs);
-    }
-
-    @Override
-    public void removeObserver() {
-        listObserver = new ArrayList<Observer>();    
     }
 
     @Override
@@ -94,5 +81,15 @@ public class CaseModel implements Observable{
 
     public void fail() {
         controler.fail();
+    }
+
+    @Override
+    public void notifyObserver(int n, int m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeObserver() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

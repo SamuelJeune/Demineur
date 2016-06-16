@@ -7,7 +7,6 @@ package view;
 
 import controler.CaseControler;
 import controler.Controler;
-import view.Drapeau;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.effect.Light;
@@ -29,7 +28,7 @@ public class Case extends Parent implements Observer{
     
     private int positionX = 0;
     private int positionY = 0;
-    Rectangle fond_case = new Rectangle(50,50,Color.WHITE);
+    Rectangle fond_case;
     private boolean drapeau = false;
     Drapeau drap = new Drapeau();
     private int n;
@@ -37,8 +36,8 @@ public class Case extends Parent implements Observer{
     private CaseControler caseControler;
     private  Value value;
     
-    public Case(int posX, int posY, Controler controler){
-        
+    public Case(int posX, int posY, Controler controler, int size){
+        this.fond_case = new Rectangle(600/size,600/size,Color.WHITE);
         this.positionX = posX;
         this.positionY = posY;
         this.caseModel = new CaseModel(controler, posX, posY);
@@ -54,7 +53,6 @@ public class Case extends Parent implements Observer{
         fond_case.setEffect(li);
         final StackPane stack = new StackPane(); 
         stack.getChildren().addAll(drap, value, fond_case); 
-        //this.getChildren().add(fond_case);
         this.setTranslateX(positionX);
         this.setTranslateY(positionY);
         caseModel.addObserver(this);
@@ -122,14 +120,18 @@ public class Case extends Parent implements Observer{
     }
 
     @Override
-    public void update(int n) {
+    public void update(int n, int m) {
         System.out.println(n);
         Text nb = new Text(Integer.toString(n));
-        
     }
 
     @Override
     public void update(boolean fail) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(int n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

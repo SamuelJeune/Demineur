@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controler;
 
 import java.util.ArrayList;
-import java.util.Random;
 import model.CaseModel;
 import model.GameModel;
 import model.Observable;
@@ -27,7 +22,6 @@ public class Controler implements Observable{
     boolean fail =false;
     
     
-
     public Controler(int size,  int bombNumber) {
         this.size = size;
         this.bombNumber = bombNumber;
@@ -43,7 +37,6 @@ public class Controler implements Observable{
     }
 
     public void discovering(int x, int y) {
-        
         try{
             grille[x-1][y-1].discovering();
             }catch (java.lang.ArrayIndexOutOfBoundsException e) {}
@@ -68,14 +61,6 @@ public class Controler implements Observable{
         try{
             grille[x+1][y+1].discovering();
             }catch (java.lang.ArrayIndexOutOfBoundsException e) {}
-        /*for (int i=x-1; i<x+1; i++){
-            for (int j=y-1; j<y+1; j++){
-                try{
-                grille[i][j].discovering();
-                }catch (java.lang.ArrayIndexOutOfBoundsException e) {}
-            }
-        }*/
-        //System.out.println("for");
     }
 
     public void fail() {
@@ -85,6 +70,13 @@ public class Controler implements Observable{
     @Override
     public void addObserver(Observer obs) {
         this.listObserver.add(obs);
+    }
+
+
+    @Override
+    public void notifyObserver(boolean fail) {
+        for(Observer obs : listObserver)
+        obs.update(fail);
     }
 
     @Override
@@ -98,12 +90,7 @@ public class Controler implements Observable{
     }
 
     @Override
-    public void notifyObserver(boolean fail) {
-        for(Observer obs : listObserver)
-        obs.update(fail);
+    public void notifyObserver(int n, int m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-    
 }

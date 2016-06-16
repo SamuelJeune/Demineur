@@ -5,7 +5,6 @@
  */
 package view;
 
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;

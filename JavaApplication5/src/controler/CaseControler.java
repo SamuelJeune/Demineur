@@ -47,7 +47,7 @@ public class CaseControler {
     }
 
     private void fail() {
-        System.out.println("fail");
+        
         caseModel.fail();
     }   
 }

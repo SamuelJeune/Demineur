@@ -36,7 +36,7 @@ public class GameModel implements Observable{
             for(int j=0; j<size; j++){
             }
         }
-        System.out.println("init");
+        
     }
     
     public void calcul(){
@@ -136,7 +136,7 @@ public class GameModel implements Observable{
     }
     
     public int getValue(int i, int j){
-        System.out.println("value");
+        
         return matrixBomb[i][j];
     }
 

@@ -2,16 +2,10 @@
 package view;
 
 import controler.Controler;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import model.Observer;
 
 /**
  *
@@ -28,6 +22,17 @@ public class HighPanel extends Parent{
         TimerView tv = new TimerView();
         this.getChildren().add(tv);
         this.controler=controler;
+        int size = controler.getSize();
+        int bomb = controler.getBombNumber();
+        Label sized = new Label("taille : "+ size);
+        Label bombd = new Label("nombre de bombe :"+ bomb);
+        this.getChildren().add(sized);
+        this.getChildren().add(bombd);
+        sized.setTranslateX(50);
+        bombd.setTranslateX(400);
+        sized.setTranslateY(50);
+        bombd.setTranslateY(50);
+        
         /*Button button = new Button();
         button.setText("Restart"); 
         this.getChildren().add(button);

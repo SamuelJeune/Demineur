@@ -23,6 +23,14 @@ public class Controler implements Observable{
     private ArrayList<Observer> listObserver = new ArrayList<Observer>();
     boolean fail =false;
     public int bombnb;
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getBombNumber() {
+        return bombNumber;
+    }
     
     
     public Controler(int size,  int bombNumber) {

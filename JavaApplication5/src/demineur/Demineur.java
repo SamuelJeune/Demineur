@@ -56,16 +56,16 @@ public class Demineur extends Application implements Observer{
         this.high = new HighPanel(controler);
         border.setTop(high);
         border.setCenter(plateau);
-        scene = new Scene(border,600,700, Color.LIGHTBLUE);
+        scene = new Scene(border,700,800, Color.LIGHTBLUE);
         this.stage.setResizable(false);
         this.stage.sizeToScene(); 
-        this.stage.setTitle("D-mineur");
+        this.stage.setTitle("Démineur");
         this.stage.setScene(scene );
         this.stage.show();
     }
 
     public void update(int n, int m) {
-            System.out.println("game1");
+            
             this.game(n, m);    
     }
 

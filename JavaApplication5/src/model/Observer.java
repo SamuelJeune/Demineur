@@ -15,4 +15,5 @@ public interface Observer {
     public void update(int n);
     public void update(boolean fail);
     public void update(int n, int m);
+    public void update(int n, int m, int h);
 }

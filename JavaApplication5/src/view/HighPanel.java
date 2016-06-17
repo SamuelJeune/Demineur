@@ -20,15 +20,13 @@ import model.Observer;
 public class HighPanel extends Parent{
     
     Rectangle background = new Rectangle(800,100,Color.GREY);
-    HBox box = new HBox();
+    
     Controler controler;
     
     public HighPanel(Controler controler){
         this.getChildren().add(background);
-        Rectangle rectangle = new Rectangle(50,50, Color.DARKGREY);
-        //box.getChildren().add(5, rectangle);
-        //box.getChildren().add(rectangle);
-        this.getChildren().add(box);
+        TimerView tv = new TimerView();
+        this.getChildren().add(tv);
         this.controler=controler;
         /*Button button = new Button();
         button.setText("Restart"); 

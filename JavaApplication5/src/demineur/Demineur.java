@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 import javafx.scene.layout.BorderPane;
 import model.Observer;
-import view.Fail;
 import view.HighPanel;
 import view.Menu;
 import view.Plateau;
@@ -88,5 +87,10 @@ public class Demineur extends Application implements Observer{
     public void update(boolean fail) {
         
         high.fail(fail);
+    }
+
+    @Override
+    public void update(int n, int m, int h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

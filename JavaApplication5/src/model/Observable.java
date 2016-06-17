@@ -15,4 +15,5 @@ public interface Observable {
     public void notifyObserver(boolean flag, boolean discover);
     public void notifyObserver(boolean fail);
     public void notifyObserver(int n, int m);
+    public void notifyObserver(int n, int m, int h);
 }

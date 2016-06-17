@@ -163,4 +163,9 @@ public class GameModel implements Observable{
     public void notifyObserver(int n, int m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }  
+
+    @Override
+    public void notifyObserver(int n, int m, int h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

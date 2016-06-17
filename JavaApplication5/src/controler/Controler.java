@@ -105,4 +105,9 @@ public class Controler implements Observable{
             notifyObserver(false);
         }
     }
+
+    @Override
+    public void notifyObserver(int n, int m, int h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

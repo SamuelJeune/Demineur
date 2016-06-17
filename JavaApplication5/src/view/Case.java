@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -35,8 +37,11 @@ public class Case extends Parent implements Observer{
     private CaseModel caseModel;
     private CaseControler caseControler;
     private  Value value;
+    private StackPane stack = new StackPane();
+    private int size;
     
     public Case(int posX, int posY, Controler controler, int size){
+        this.size=size;
         this.fond_case = new Rectangle(600/size,600/size,Color.WHITE);
         this.positionX = posX;
         this.positionY = posY;
@@ -51,7 +56,7 @@ public class Case extends Parent implements Observer{
         this.n=caseModel.getValue();
         this.value = new Value(n);
         fond_case.setEffect(li);
-        final StackPane stack = new StackPane(); 
+        
         stack.getChildren().addAll(drap, value, fond_case); 
         this.setTranslateX(positionX);
         this.setTranslateY(positionY);
@@ -115,7 +120,15 @@ public class Case extends Parent implements Observer{
         else drap.toBack();
         if (discover){
             drap.toBack();
+            if (n==1000){
+                
+                ImageView bomb = new ImageView(new Image(Case.class.getResourceAsStream("images/bomb.jpg")));
+                bomb.setFitHeight(600/size);
+                bomb.setPreserveRatio(true);
+                stack.getChildren().add(bomb);
+            }else{
             value.toFront();
+            }
         }
     }
 

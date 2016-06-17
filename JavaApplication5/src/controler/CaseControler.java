@@ -24,6 +24,9 @@ public class CaseControler {
     public void addFlag(){
         if (flagged==false){
             this.flagged=true;
+            if (this.value==1000){
+                
+            }
             }
         else {
             this.flagged=false;
@@ -34,6 +37,7 @@ public class CaseControler {
 
     public void discover() {
         if (value==1000){
+            
             caseModel.setDiscovered(true);
             fail();
         }

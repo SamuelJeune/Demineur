@@ -1,7 +1,9 @@
 
 package controler;
 
+import demineur.Demineur;
 import java.util.ArrayList;
+import static javafx.application.Application.launch;
 import model.CaseModel;
 import model.GameModel;
 import model.Observable;
@@ -20,6 +22,7 @@ public class Controler implements Observable{
     public CaseModel[][] grille;
     private ArrayList<Observer> listObserver = new ArrayList<Observer>();
     boolean fail =false;
+    public int bombnb;
     
     
     public Controler(int size,  int bombNumber) {
@@ -92,5 +95,14 @@ public class Controler implements Observable{
     @Override
     public void notifyObserver(int n, int m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void bombFound(){
+        bombNumber--;
+        
+        if (bombNumber==0){
+            
+            notifyObserver(false);
+        }
     }
 }

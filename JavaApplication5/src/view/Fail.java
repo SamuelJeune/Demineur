@@ -13,11 +13,18 @@ import javafx.scene.text.Text;
  */
 public class Fail extends Parent{
     
-    Rectangle finDeJeu = new Rectangle(200,200,Color.WHITE);
-    Text nb = new Text("You Fail !!");
+    Rectangle finDeJeu = new Rectangle(200,100,Color.GREY);
+    Text nb;
     StackPane stack = new StackPane(); 
     
-    public Fail(){
+    public Fail(boolean fail){
+        if(fail){
+            nb = new Text("You Fail !!");
+        }
+        else{
+            
+            nb = new Text("You WIn !!");
+        }
         stack.getChildren().addAll(finDeJeu, nb);
         this.getChildren().add(stack);
     }

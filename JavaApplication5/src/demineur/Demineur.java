@@ -27,13 +27,13 @@ public class Demineur extends Application implements Observer{
     private Plateau plateau;
     private Scene scene;    
     private Stage stage;
+    private BorderPane border = new BorderPane();
+    private HighPanel high;
     
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
-        this.menu();
-        
-        
+        this.menu();   
     }
     
     public void menu(){
@@ -54,27 +54,15 @@ public class Demineur extends Application implements Observer{
         BorderPane border = new BorderPane();
         this.stage=stage;
         this.controler.addObserver(this);
-        HighPanel high = new HighPanel();
+        this.high = new HighPanel(controler);
         border.setTop(high);
         border.setCenter(plateau);
-        scene = new Scene(border,800,800, Color.LIGHTBLUE);
+        scene = new Scene(border,600,700, Color.LIGHTBLUE);
         this.stage.setResizable(false);
         this.stage.sizeToScene(); 
         this.stage.setTitle("D-mineur");
         this.stage.setScene(scene );
         this.stage.show();
-    }
-
-    public void update(boolean fail) {
-        if (fail){
-            BorderPane border2 = new BorderPane();
-            Fail failDisp = new Fail();
-            border2.setCenter(failDisp);
-            System.out.println("you fail");
-            scene = new Scene(border2,800,800, Color.LIGHTBLUE);
-            this.stage.setScene(scene );
-            this.stage.show();
-        }
     }
 
     public void update(int n, int m) {
@@ -94,5 +82,11 @@ public class Demineur extends Application implements Observer{
     @Override
     public void update(int n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(boolean fail) {
+        
+        high.fail(fail);
     }
 }

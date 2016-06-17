@@ -22,5 +22,4 @@ public class Drapeau extends Parent{
         drapeauView.setPreserveRatio(true);
         this.getChildren().add(drapeauView);
     }
-    
 }

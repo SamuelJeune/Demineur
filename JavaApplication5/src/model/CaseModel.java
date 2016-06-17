@@ -41,9 +41,13 @@ public class CaseModel implements Observable{
 
     public void setFlagged(boolean flag) {
         System.out.println(flag);
-
+        
         this.flagged = flag;
         if (!discovered){
+            if (this.value==1000){
+                controler.bombFound();
+                
+            }
             notifyObserver(this.flagged, this.discovered);
         }
     }
